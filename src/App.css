@@ -4,8 +4,8 @@
     box-sizing: border-box;
   }
   body {
-    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-    color: white;
+    background-image: linear-gradient(180deg, #570A57 0%, #2E0249 75%);
+    color: #cb3eb2;
     font-family: "Poppins", sans-serif;
     min-height: 100vh;
   }
@@ -27,14 +27,17 @@
     border: none;
     background: white;
   }
+  form input:focus {
+    outline: none;
+  }
   form button {
-    color: #ff6f47;
+    color: #b524cb;
     background: #f7fffe;
     cursor: pointer;
     transition: all 0.3s ease;
   }
   form button:hover {
-    background: #ff6f47;
+    background: #b524cb;
     color: white;
   }
   .todo-container {
@@ -52,7 +55,7 @@
     margin: 0.5rem;
     background: white;
     font-size: 1.5rem;
-    color: black;
+    color: #cb3eb2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,18 +70,27 @@
   
   .trash-btn,
   .complete-btn {
-    background: #ff6f47;
+    background: #b524cb;
     color: white;
     border: none;
     padding: 1rem;
     cursor: pointer;
     font-size: 1rem;
+    transition: all 0.3s ease;
   }
   .complete-btn {
-    background: rgb(11, 212, 162);
+    background: #cb3eb2;
   }
   .todo-item {
+    transition: all 0.3s ease;
     padding: 0rem 0.5rem;
+  }
+
+  .complete-btn:hover {
+    background: #a2318d;
+  }
+  .trash-btn:hover {
+    background: #9115a4;
   }
   
   .fa-trash,
@@ -87,8 +99,14 @@
   }
   
   .fall {
-    transform: translateY(10rem) rotateZ(20deg);
-    opacity: 0;
+    animation: fall-anim 0.5s ease forwards;
+  }
+
+  @keyframes fall-anim {
+    100% {
+      transform: translateY(10rem) rotateZ(20deg);
+      opacity: 0;
+    }
   }
   
   .completed {
@@ -115,7 +133,7 @@
     overflow: hidden;
   }
   select {
-    color: #ff6f47;
+    color: #cb3eb2;
     font-family: "Poppins", sans-serif;
     cursor: pointer;
     width: 12rem;
@@ -127,14 +145,8 @@
     top: 0;
     right: 0;
     padding: 1rem;
-    background: #ff6f47;
+    background: #b524cb;
+    color: white;
     cursor: pointer;
     pointer-events: none;
   }
-  /* Transition */
-  /*
-  .select:hover::after {
-    transform: scale(1.5);
-  }
-  */
-  

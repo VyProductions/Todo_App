@@ -13,10 +13,23 @@ const Todo = ( { setTodos, todos, todo, text } ) => {
     }))
   }
   const deleteHandler = () => {
-    setTodos(todos.filter(el => el.id !== todo.id));
+    setTodos(todos.map(item => {
+      if (item.id === todo.id) {
+        return {
+          ...item, deleting: true
+        }
+      }
+      return item;
+    }))
   };
+  const animationEndHandler = ({ animationName }) => {
+    if (animationName === "fall-anim") {
+      setTodos(todos.filter(el => el.id !== todo.id));
+    }
+  }
+
   return (
-    <div className = "todo">
+    <div onAnimationEnd={(event) => animationEndHandler(event)} className ={`todo ${todo.deleting ? "fall" : ""}`}>
       <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li>
       <button onClick={completeHandler} className="complete-btn">
         <i className="fas fa-check"></i>
