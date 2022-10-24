@@ -21,6 +21,7 @@ const Todo = ( { setTodos, todos, todo, text } ) => {
       }
       return item;
     }))
+    console.log("Delete btn pressed.");
   };
   const animationEndHandler = ({ animationName }) => {
     if (animationName === "fall-anim") {
