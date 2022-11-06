@@ -2,14 +2,15 @@ import React from "react"
 import useTodoStore from "../useTodoStore";
 
 const Todo = ({ todo, text }) => {
-  // Bound State
+  // ------
+  // Bound State Functions
   const removeTodo = useTodoStore(state => state.removeTodo);
-  const toggleTodoCompletion = useTodoStore(state => state.toggleTodoCompletion);
+  const toggleTodoCompleted = useTodoStore(state => state.toggleTodoCompleted);
   const setFilteredTodos = useTodoStore(state => state.setFilteredTodos);
 
   // Event Handlers
   const completeHandler = () => {
-    toggleTodoCompletion(todo.id);
+    toggleTodoCompleted(todo.id);
     setFilteredTodos();
   }
 

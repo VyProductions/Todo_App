@@ -128,7 +128,6 @@
   }
 
   .select {
-    /* margin: 1vmin; */
     position: relative;
     overflow: hidden;
     transition: outline 0.1s ease;
