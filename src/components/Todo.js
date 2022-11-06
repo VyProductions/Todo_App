@@ -1,41 +1,32 @@
 import React from "react"
+import useTodoStore from "../useTodoStore";
 
-const Todo = ( { setTodos, todos, todo, text } ) => {
-  // Events
+const Todo = ({ todo, text }) => {
+  // Bound State
+  const removeTodo = useTodoStore(state => state.removeTodo);
+  const toggleTodoCompletion = useTodoStore(state => state.toggleTodoCompletion);
+  const setFilteredTodos = useTodoStore(state => state.setFilteredTodos);
+
+  // Event Handlers
   const completeHandler = () => {
-    setTodos(todos.map(item => {
-      if (item.id === todo.id) {
-        return {
-          ...item, completed: !item.completed
-        }
-      }
-      return item;
-    }))
+    toggleTodoCompletion(todo.id);
+    setFilteredTodos();
   }
+
   const deleteHandler = () => {
-    setTodos(todos.map(item => {
-      if (item.id === todo.id) {
-        return {
-          ...item, deleting: true
-        }
-      }
-      return item;
-    }))
-    console.log("Delete btn pressed.");
+    removeTodo(todo.id);
+    setFilteredTodos();
   };
-  const animationEndHandler = ({ animationName }) => {
-    if (animationName === "fall-anim") {
-      setTodos(todos.filter(el => el.id !== todo.id));
-    }
-  }
 
   return (
-    <div onAnimationEnd={(event) => animationEndHandler(event)} className ={`todo ${todo.deleting ? "fall" : ""}`}>
-      <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li>
-      <button onClick={completeHandler} className="complete-btn">
+    <div className="todo" data-testid="todo element">
+      <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
+        {text}
+      </li>
+      <button onClick={completeHandler} className="complete-btn" aria-label="complete-btn">
         <i className="fas fa-check"></i>
       </button>
-      <button onClick={deleteHandler} className="trash-btn">
+      <button onClick={deleteHandler} className="trash-btn" aria-label="trash-btn">
         <i className="fas fa-trash"></i>
       </button>
     </div>

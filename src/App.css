@@ -53,6 +53,9 @@
     font-size: 3vmin;
     border: none;
   }
+  form input::placeholder {
+    color: #cb3eb168;
+  }
   form input:focus {
     outline: none;
   }
@@ -119,16 +122,6 @@
     pointer-events: none;
   }
 
-  .fall {
-    outline: none;
-    animation: fall-anim 0.5s ease forwards;
-  }
-  @keyframes fall-anim {
-    100% {
-      transform: translateY(10rem) rotateZ(20deg);
-      opacity: 0;
-    }
-  }
   .completed {
     text-decoration: line-through;
     opacity: 0.5;
@@ -154,6 +147,7 @@
     cursor: pointer;
     pointer-events: none;
     padding: 1vmin;
+    font-size: 2vmin;
   }
   .select:hover {
     outline: 5px solid #cf83dbf6;
