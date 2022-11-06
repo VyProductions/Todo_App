@@ -48,7 +48,7 @@ const todoStore = (set) => ({
 
 // Create store
 const useTodoStore = create(
-    devtools(
+    devtools(  // Cause data to be stored in local-storage
         persist(todoStore, {name: "todo-store"})
     )
 );
